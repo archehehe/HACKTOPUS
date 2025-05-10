@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\speak4me]
+"URL Protocol"=""
+@="URL:Speak4Me Protocol"
+
+[HKEY_CLASSES_ROOT\speak4me\shell]
+
+[HKEY_CLASSES_ROOT\speak4me\shell\open]
+
+[HKEY_CLASSES_ROOT\speak4me\shell\open\command]
+@="\"C:\\Path\\To\\Python\\python.exe\" \"C:\\Path\\To\\Your\\Script\\out3.py\" \"%1\""

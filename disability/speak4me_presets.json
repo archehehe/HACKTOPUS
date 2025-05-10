@@ -1,0 +1,16 @@
+[
+  {
+    "name": "nc",
+    "voice_index": 0,
+    "rate": 150,
+    "volume": 1.0,
+    "timestamp": "2025-04-28T16:41:38.595474"
+  },
+  {
+    "name": "s",
+    "voice_index": 2,
+    "rate": 150,
+    "volume": 1.0,
+    "timestamp": "2025-04-28T16:45:38.193825"
+  }
+]

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speak4Me Pro</title>
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-router-dom@6.3.0/umd/react-router-dom.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.18.9/babel.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; }
+        .tooltip {
+            position: relative;
+        }
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { BrowserRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+        const App = () => {
+            const [darkMode, setDarkMode] = useState(false);
+            const [status, setStatus] = useState("Ready");
+
+            return (
+                <BrowserRouter>
+                    <div className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'} min-h-screen flex`}>
+                        {/* Sidebar */}
+                        <div className="w-64 bg-gray-800 text-white p-4 flex flex-col">
+                            <h1 className="text-xl font-bold mb-6">Speak4Me Pro</h1>
+                            <nav>
+                                <Link to="/speak" className={`block py-2 px-4 rounded ${useLocation().pathname === '/speak' ? 'bg-gray-700' : 'hover:bg-gray-700'} mb-2`}>Speak</Link>
+                                <Link to="/record" className={`block py-2 px-4 rounded ${useLocation().pathname === '/record' ? 'bg-gray-700' : 'hover:bg-gray-700'} mb-2`}>Record</Link>
+                                <Link to="/history" className={`block py-2 px-4 rounded ${useLocation().pathname === '/history' ? 'bg-gray-700' : 'hover:bg-gray-700'} mb-2`}>History</Link>
+                                <Link to="/settings" className={`block py-2 px-4 rounded ${useLocation().pathname === '/settings' ? 'bg-gray-700' : 'hover:bg-gray-700'} mb-2`}>Settings</Link>
+                            </nav>
+                            <button
+                                onClick={() => setDarkMode(!darkMode)}
+                                className="mt-auto py-2 px-4 bg-blue-600 rounded hover:bg-blue-700"
+                            >
+                                Toggle {darkMode ? 'Light' : 'Dark'} Mode
+                            </button>
+                        </div>
+                        {/* Main Content */}
+                        <div className="flex-1 p-6">
+                            <Routes>
+                                <Route path="/" element={<Speak darkMode={darkMode} setStatus={setStatus} />} />
+                                <Route path="/speak" element={<Speak darkMode={darkMode} setStatus={setStatus} />} />
+                                <Route path="/record" element={<Record darkMode={darkMode} setStatus={setStatus} />} />
+                                <Route path="/history" element={<History darkMode={darkMode} setStatus={setStatus} />} />
+                                <Route path="/settings" element={<Settings darkMode={darkMode} setStatus={setStatus} />} />
+                            </Routes>
+                            <div className="mt-4 p-2 bg-gray-200 dark:bg-gray-700 rounded">
+                                <p>Status: {status}</p>
+                            </div>
+                        </div>
+                    </div>
+                </BrowserRouter>
+            );
+        };
+
+        const Speak = ({ darkMode, setStatus }) => {
+            const [text, setText] = useState('');
+            const [voices, setVoices] = useState([]);
+            const [selectedVoice, setSelectedVoice] = useState(0);
+            const [rate, setRate] = useState(150);
+            const [volume, setVolume] = useState(1.0);
+            const [pitch, setPitch] = useState(0);
+            const [emotion, setEmotion] = useState('Normal');
+            const [context, setContext] = useState('Auto');
+            const [pronunciationEnabled, setPronunciationEnabled] = useState(false);
+            const [progress, setProgress] = useState(0);
+            const [audio, setAudio] = useState(null);
+
+            useEffect(() => {
+                axios.get('http://localhost:5000/api/voices')
+                    .then(res => setVoices(res.data))
+                    .catch(err => setStatus('Error fetching voices: ' + err.message));
+            }, []);
+
+            const speak = () => {
+                if (!text) {
+                    setStatus('Enter text to speak');
+                    return;
+                }
+                setProgress(0);
+                axios.post('http://localhost:5000/api/speak', {
+                    text, rate, volume, pitch, voice_index: selectedVoice
+                }, { responseType: 'blob' })
+                    .then(res => {
+                        const url = URL.createObjectURL(res.data);
+                        const audioObj = new Audio(url);
+                        setAudio(audioObj);
+                        audioObj.play();
+                        setStatus('Speaking...');
+                        const interval = setInterval(() => {
+                            setProgress(prev => {
+                                if (prev >= 100) {
+                                    clearInterval(interval);
+                                    setStatus('Finished');
+                                    return 100;
+                                }
+                                return prev + 10;
+                            });
+                        }, 500);
+                        audioObj.onended = () => {
+                            clearInterval(interval);
+                            setProgress(100);
+                            setStatus('Finished');
+                        };
+                    })
+                    .catch(err => setStatus('Speak error: ' + err.message));
+            };
+
+            const stop = () => {
+                if (audio) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    setProgress(0);
+                    setStatus('Stopped');
+                }
+            };
+
+            const analyzeSentiment = () => {
+                if (!text) {
+                    setStatus('Enter text to analyze sentiment');
+                    return;
+                }
+                axios.post('http://localhost:5000/api/sentiment', { text })
+                    .then(res => {
+                        setEmotion(res.data.suggested_emotion);
+                        applyEmotion(res.data.suggested_emotion);
+                        setStatus(`Sentiment: ${res.data.sentiment} (Suggested Emotion: ${res.data.suggested_emotion})`);
+                    })
+                    .catch(err => setStatus('Sentiment error: ' + err.message));
+            };
+
+            const applyEmotion = (emotion) => {
+                const emotions = {
+                    'Happy': { rate: 180, volume: 1.0 },
+                    'Sad': { rate: 90, volume: 0.8 },
+                    'Angry': { rate: 220, volume: 1.1 },
+                    'Calm': { rate: 110, volume: 0.9 },
+                    'Normal': { rate: 150, volume: 1.0 }
+                };
+                const settings = emotions[emotion] || emotions['Normal'];
+                setRate(settings.rate);
+                setVolume(settings.volume);
+            };
+
+            const applyContext = (context) => {
+                const contexts = {
+                    'News': { rate: 180, volume: 1.0 },
+                    'Poetry': { rate: 100, volume: 0.9 },
+                    'Story': { rate: 140, volume: 0.9 },
+                    'Dialogue': { rate: 160, volume: 0.95 },
+                    'Technical': { rate: 150, volume: 1.0 },
+                    'Auto': { rate: 150, volume: 1.0 }
+                };
+                const settings = contexts[context] || contexts['Auto'];
+                setRate(settings.rate);
+                setVolume(settings.volume);
+            };
+
+            return (
+                <div>
+                    <h2 className="text-2xl font-bold mb-4">Speak</h2>
+                    <textarea
+                        className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        rows="5"
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        placeholder="Enter text to speak..."
+                    />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div className="tooltip">
+                            <label className="block mb-1">Voice</label>
+                            <select
+                                className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                value={selectedVoice}
+                                onChange={(e) => setSelectedVoice(parseInt(e.target.value))}
+                            >
+                                {voices.map((voice, index) => (
+                                    <option key={index} value={index}>{voice}</option>
+                                ))}
+                            </select>
+                            <span className="tooltip-text">Select a voice for speech</span>
+                        </div>
+                        <div className="tooltip">
+                            <label className="block mb-1">Speed (wpm)</label>
+                            <input
+                                type="range"
+                                min="50"
+                                max="300"
+                                value={rate}
+                                onChange={(e) => setRate(parseInt(e.target.value))}
+                                className="w-full"
+                            />
+                            <span className="tooltip-text">Adjust speech speed (50-300 wpm)</span>
+                        </div>
+                        <div className="tooltip">
+                            <label className="block mb-1">Volume</label>
+                            <input
+                                type="range"
+                                min="0"
+                                max="100"
+                                value={volume * 100}
+                                onChange={(e) => setVolume(parseFloat(e.target.value) / 100)}
+                                className="w-full"
+                            />
+                            <span className="tooltip-text">Adjust volume (0-100%)</span>
+                        </div>
+                        <div className="tooltip">
+                            <label className="block mb-1">Pitch</label>
+                            <input
+                                type="range"
+                                min="-10"
+                                max="10"
+                                value={pitch}
+                                onChange={(e) => setPitch(parseInt(e.target.value))}
+                                className="w-full"
+                            />
+                            <span className="tooltip-text">Adjust pitch (SAPI5 only)</span>
+                        </div>
+                        <div>
+                            <label className="block mb-1">Emotion</label>
+                            <select
+                                className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                value={emotion}
+                                onChange={(e) => { setEmotion(e.target.value); applyEmotion(e.target.value); }}
+                            >
+                                <option>Normal</option>
+                                <option>Happy</option>
+                                <option>Sad</option>
+                                <option>Angry</option>
+                                <option>Calm</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block mb-1">Context</label>
+                            <select
+                                className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                value={context}
+                                onChange={(e) => { setContext(e.target.value); applyContext(e.target.value); }}
+                            >
+                                <option>Auto</option>
+                                <option>News</option>
+                                <option>Poetry</option>
+                                <option>Story</option>
+                                <option>Dialogue</option>
+                                <option>Technical</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="mt-4 flex space-x-4">
+                        <button
+                            onClick={speak}
+                            className="py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700"
+                        >
+                            Speak
+                        </button>
+                        <button
+                            onClick={stop}
+                            className="py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700"
+                        >
+                            Stop
+                        </button>
+                        <button
+                            onClick={analyzeSentiment}
+                            className="py-2 px-4 bg-green-600 text-white rounded hover:bg-green-700"
+                        >
+                            Analyze Sentiment
+                        </button>
+                    </div>
+                    <div className="mt-4">
+                        <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                            <div
+                                className="bg-blue-600 h-2.5 rounded-full"
+                                style={{ width: `${progress}%` }}
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const Record = ({ darkMode, setStatus }) => {
+            const [text, setText] = useState('');
+            const [recordings, setRecordings] = useState([]);
+
+            useEffect(() => {
+                axios.get('http://localhost:5000/api/record')
+                    .catch(err => setStatus('Error fetching recordings: ' + err.message));
+            }, []);
+
+            const record = () => {
+                if (!text) {
+                    setStatus('Enter text to record');
+                    return;
+                }
+                axios.post('http://localhost:5000/api/record', { text })
+                    .then(res => {
+                        setRecordings([...recordings, res.data.filename]);
+                        setStatus(`Recorded: ${res.data.filename}`);
+                    })
+                    .catch(err => setStatus('Record error: ' + err.message));
+            };
+
+            const playRecording = (filename) => {
+                axios.get(`http://localhost:5000/api/record/${filename}`, { responseType: 'blob' })
+                    .then(res => {
+                        const url = URL.createObjectURL(res.data);
+                        const audio = new Audio(url);
+                        audio.play();
+                        setStatus(`Playing: ${filename}`);
+                    })
+                    .catch(err => setStatus('Playback error: ' + err.message));
+            };
+
+            return (
+                <div>
+                    <h2 className="text-2xl font-bold mb-4">Record</h2>
+                    <textarea
+                        className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        rows="5"
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        placeholder="Enter text to record..."
+                    />
+                    <button
+                        onClick={record}
+                        className="mt-4 py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    >
+                        Record as MP3
+                    </button>
+                    <div className="mt-4">
+                        <h3 className="text-lg font-semibold">Recordings</h3>
+                        <ul className="mt-2 space-y-2">
+                            {recordings.map((file, index) => (
+                                <li key={index} className="flex items-center space-x-2">
+                                    <span>{file}</span>
+                                    <button
+                                        onClick={() => playRecording(file)}
+                                        className="py-1 px-2 bg-green-600 text-white rounded hover:bg-green-700"
+                                    >
+                                        Play
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            );
+        };
+
+        const History = ({ darkMode, setStatus }) => {
+            const [history, setHistory] = useState([]);
+            const navigate = useNavigate();
+
+            useEffect(() => {
+                axios.get('http://localhost:5000/api/history')
+                    .then(res => setHistory(res.data))
+                    .catch(err => setStatus('History error: ' + err.message));
+            }, []);
+
+            const replay = (text) => {
+                localStorage.setItem('replayText', text);
+                navigate('/speak');
+            };
+
+            const clearHistory = () => {
+                axios.post('http://localhost:5000/api/clear_history')
+                    .then(res => {
+                        setHistory([]);
+                        setStatus(res.data.message);
+                    })
+                    .catch(err => setStatus('Clear history error: ' + err.message));
+            };
+
+            return (
+                <div>
+                    <h2 className="text-2xl font-bold mb-4">History</h2>
+                    <button
+                        onClick={clearHistory}
+                        className="py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700 mb-4"
+                    >
+                        Clear History
+                    </button>
+                    <ul className="space-y-2">
+                        {history.map((entry, index) => (
+                            <li key={index} className="flex items-center space-x-2">
+                                <span>{entry.timestamp}: {entry.text.substring(0, 50)}...</span>
+                                <button
+                                    onClick={() => replay(entry.text)}
+                                    className="py-1 px-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                                >
+                                    Replay
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        };
+
+        const Settings = ({ darkMode, setStatus }) => {
+            const [word, setWord] = useState('');
+            const [pron, setPron] = useState('');
+
+            const addPronunciation = () => {
+                if (!word || !pron) {
+                    setStatus('Invalid word or pronunciation');
+                    return;
+                }
+                axios.post('http://localhost:5000/api/pronunciation', { word, pron })
+                    .then(res => {
+                        setStatus(res.data.message);
+                        setWord('');
+                        setPron('');
+                    })
+                    .catch(err => setStatus('Pronunciation error: ' + err.message));
+            };
+
+            const clearPronunciations = () => {
+                axios.post('http://localhost:5000/api/clear_pronunciations')
+                    .then(res => setStatus(res.data.message))
+                    .catch(err => setStatus('Clear pronunciations error: ' + err.message));
+            };
+
+            return (
+                <div>
+                    <h2 className="text-2xl font-bold mb-4">Settings</h2>
+                    <div className="mb-4">
+                        <h3 className="text-lg font-semibold">Add Pronunciation</h3>
+                        <div className="flex space-x-4 mt-2">
+                            <input
+                                type="text"
+                                value={word}
+                                onChange={(e) => setWord(e.target.value)}
+                                placeholder="Word"
+                                className="p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            />
+                            <input
+                                type="text"
+                                value={pron}
+                                onChange={(e) => setPron(e.target.value)}
+                                placeholder="Pronunciation"
+                                className="p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            />
+                            <button
+                                onClick={addPronunciation}
+                                className="py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700"
+                            >
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                    <button
+                        onClick={clearPronunciations}
+                        className="py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700"
+                    >
+                        Clear Pronunciations
+                    </button>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

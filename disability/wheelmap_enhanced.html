@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6eb6c37e11ee198ddc769cc10c48140a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_6eb6c37e11ee198ddc769cc10c48140a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6eb6c37e11ee198ddc769cc10c48140a = L.map(
+                "map_6eb6c37e11ee198ddc769cc10c48140a",
+                {
+                    center: [52.5162699, 13.3777034],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 15,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d7a018884de39004dfd1d9f2e25bc239 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d7a018884de39004dfd1d9f2e25bc239.addTo(map_6eb6c37e11ee198ddc769cc10c48140a);
+        
+    
+            var marker_6bdbb92830a2df0bc413e4ae16f72931 = L.marker(
+                [52.5162699, 13.3777034],
+                {
+}
+            ).addTo(map_6eb6c37e11ee198ddc769cc10c48140a);
+        
+    
+            var icon_88266d8209319f8c15a6760f189a2ef5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "user",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e7165bbb0d000358623de6c70f2b1f0f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_62f1ce6c2d065ebc1ae7f157eeda7c29 = $(`<div id="html_62f1ce6c2d065ebc1ae7f157eeda7c29" style="width: 100.0%; height: 100.0%;">Your Location</div>`)[0];
+                popup_e7165bbb0d000358623de6c70f2b1f0f.setContent(html_62f1ce6c2d065ebc1ae7f157eeda7c29);
+            
+        
+
+        marker_6bdbb92830a2df0bc413e4ae16f72931.bindPopup(popup_e7165bbb0d000358623de6c70f2b1f0f)
+        ;
+
+        
+    
+    
+                marker_6bdbb92830a2df0bc413e4ae16f72931.setIcon(icon_88266d8209319f8c15a6760f189a2ef5);
+            
+    
+            var marker_458422206bb307948a684e785ea5d61f = L.marker(
+                [52.516275, 13.377704],
+                {
+}
+            ).addTo(map_6eb6c37e11ee198ddc769cc10c48140a);
+        
+    
+            var icon_f2dbe3e831f9fa1b727a663c8212c55b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "wheelchair",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4382cf54304bd02c90d618dfee2c7c4f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4b2c9ac729cebaf87badaf2d43c04722 = $(`<div id="html_4b2c9ac729cebaf87badaf2d43c04722" style="width: 100.0%; height: 100.0%;"><b>Brandenburg Gate</b><br>Accessibility: 🟢 Fully Accessible<br>Fully wheelchair accessible with ramps and accessible restrooms.</div>`)[0];
+                popup_4382cf54304bd02c90d618dfee2c7c4f.setContent(html_4b2c9ac729cebaf87badaf2d43c04722);
+            
+        
+
+        marker_458422206bb307948a684e785ea5d61f.bindPopup(popup_4382cf54304bd02c90d618dfee2c7c4f)
+        ;
+
+        
+    
+    
+                marker_458422206bb307948a684e785ea5d61f.setIcon(icon_f2dbe3e831f9fa1b727a663c8212c55b);
+            
+    
+            var marker_38b3db147a9db19b5a42d9ad2001becc = L.marker(
+                [52.519171, 13.401112],
+                {
+}
+            ).addTo(map_6eb6c37e11ee198ddc769cc10c48140a);
+        
+    
+            var icon_749fe547e05f33851945e076a055990b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "wheelchair",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d5d9e6210dd0fe043600b1b6f2fde325 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e53cacba0a6c438a6f78078bb4a2e523 = $(`<div id="html_e53cacba0a6c438a6f78078bb4a2e523" style="width: 100.0%; height: 100.0%;"><b>Berlin Cathedral</b><br>Accessibility: 🟡 Partially Accessible<br>Partial access - main floor accessible but upper levels require stairs.</div>`)[0];
+                popup_d5d9e6210dd0fe043600b1b6f2fde325.setContent(html_e53cacba0a6c438a6f78078bb4a2e523);
+            
+        
+
+        marker_38b3db147a9db19b5a42d9ad2001becc.bindPopup(popup_d5d9e6210dd0fe043600b1b6f2fde325)
+        ;
+
+        
+    
+    
+                marker_38b3db147a9db19b5a42d9ad2001becc.setIcon(icon_749fe547e05f33851945e076a055990b);
+            
+    
+            var marker_528dd92757172e5b7f791a0cb6fc9e86 = L.marker(
+                [52.507507, 13.390374],
+                {
+}
+            ).addTo(map_6eb6c37e11ee198ddc769cc10c48140a);
+        
+    
+            var icon_5789b5f0d77b42458b8a067f8df4a87c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "wheelchair",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1cd35e4315fa2724a9c7e941cb25cc2e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_49ff60b72d5de9f6a50087cc217d65fc = $(`<div id="html_49ff60b72d5de9f6a50087cc217d65fc" style="width: 100.0%; height: 100.0%;"><b>Checkpoint Charlie</b><br>Accessibility: 🔴 Not Accessible<br>No wheelchair access - steps at entrance and narrow pathways.</div>`)[0];
+                popup_1cd35e4315fa2724a9c7e941cb25cc2e.setContent(html_49ff60b72d5de9f6a50087cc217d65fc);
+            
+        
+
+        marker_528dd92757172e5b7f791a0cb6fc9e86.bindPopup(popup_1cd35e4315fa2724a9c7e941cb25cc2e)
+        ;
+
+        
+    
+    
+                marker_528dd92757172e5b7f791a0cb6fc9e86.setIcon(icon_5789b5f0d77b42458b8a067f8df4a87c);
+            
+</script>
+</html>

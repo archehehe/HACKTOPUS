@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disability Resources - Access Ease</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#4F86C6", secondary: "#7EB09B" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .resource-card {
+        transition: transform 0.3s ease;
+      }
+      .resource-card:hover {
+        transform: translateY(-5px);
+      }
+      .tab-button.active {
+        background-color: #4f86c6;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <a href="index.html" class="flex items-center">
+            <h1 class="text-3xl font-['Pacifico'] text-primary">Access Ease</h1>
+          </a>
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="index.html"
+              class="font-medium text-gray-800 hover:text-primary transition"
+              >Home</a
+            >
+            <a href="#" class="font-medium text-primary">Resources</a>
+            <a
+              href="#"
+              class="font-medium text-gray-800 hover:text-primary transition"
+              >Community</a
+            >
+            <a
+              href="#"
+              class="font-medium text-gray-800 hover:text-primary transition"
+              >Support</a
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <button
+              class="px-6 py-2 bg-primary text-white font-medium rounded shadow-md hover:bg-primary/90 transition !rounded-button whitespace-nowrap"
+            >
+              Get Help
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section
+      class="relative py-20 bg-gradient-to-r from-primary/10 to-secondary/10"
+    >
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Specialized Resources for Every Need
+          </h1>
+          <p class="text-xl text-gray-600 mb-8">
+            Find support, tools, and guidance tailored to your specific
+            requirements. We're here to help you navigate life with confidence.
+          </p>
+          <div class="flex justify-center space-x-4">
+            <button
+              class="tab-button active px-6 py-3 rounded-full font-medium transition"
+              onclick="switchTab('all')"
+            >
+              All Resources
+            </button>
+            <button
+              class="tab-button px-6 py-3 bg-white rounded-full font-medium hover:bg-gray-100 transition"
+              onclick="switchTab('popular')"
+            >
+              Most Popular
+            </button>
+            <button
+              class="tab-button px-6 py-3 bg-white rounded-full font-medium hover:bg-gray-100 transition"
+              onclick="switchTab('new')"
+            >
+              Newly Added
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Resource Categories -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Visual Impairment Section -->
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="relative h-64">
+              <img
+                src="https://imgs.search.brave.com/-pO8sgCsmnjoTdSZ8r_Rq-EGP5iKAQm1r-fC7v95QOE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTA5/NDU1NDAxMi9waG90/by9tYW4tdXNpbmct/dmlzdWFsbHktaW1w/YWlyZWQtYXBwLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz0z/aTNWR2haWFozczJO/LWFXSFNSelNLbGNT/ODhXd3BpU0dudWk4/djVHWHBRPQ"
+                alt="Visual Impairment Resources"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end"
+              >
+                <div class="p-6">
+                  <h2 class="text-2xl font-bold text-white mb-2">
+                    Visual Impairment
+                  </h2>
+                  <p class="text-white/90">
+                    Tools and resources for navigation, reading, and daily
+                    activities
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mb-3"
+                  >
+                    <i class="ri-computer-line text-primary"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">Screen Readers</h3>
+                  <p class="text-sm text-gray-600">
+                    Latest software for digital accessibility
+                  </p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mb-3"
+                  >
+                    <i class="ri-braille-line text-primary"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">Braille Tools</h3>
+                  <p class="text-sm text-gray-600">
+                    Braille displays and printers
+                  </p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mb-3"
+                  >
+                    <i class="ri-guide-line text-primary"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">
+                    Navigation Aids
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    Smart canes and GPS devices
+                  </p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mb-3"
+                  >
+                    <i class="ri-book-open-line text-primary"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">Audio Books</h3>
+                  <p class="text-sm text-gray-600">Extensive audio library</p>
+                </div>
+              </div>
+              <button
+                class="w-full px-4 py-2 bg-primary text-white font-medium rounded !rounded-button whitespace-nowrap"
+              >
+                Explore Visual Resources
+              </button>
+            </div>
+          </div>
+          <!-- Hearing Impairment Section -->
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="relative h-64">
+              <img
+                src="https://imgs.search.brave.com/kMP1NT9SxwQcQvOM5f8z_3Y9_XXJl3IzZ_O9ZSozjgA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQz/NTI0Mjg4NC9waG90/by93b21hbi13ZWFy/aW5nLWEtaGVhcmlu/Zy1haWQuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPWdpeWJX/UU44TzlSdU5Bbzdp/QVBDQ2lYZ2VuSkhw/NW1nZzJBMS0tU1J3/T3M9"
+                alt="Hearing Impairment Resources"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end"
+              >
+                <div class="p-6">
+                  <h2 class="text-2xl font-bold text-white mb-2">
+                    Hearing Impairment
+                  </h2>
+                  <p class="text-white/90">
+                    Communication tools and hearing assistance technology
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-full mb-3"
+                  >
+                    <i class="ri-ear-line text-secondary"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">Hearing Aids</h3>
+                  <p class="text-sm text-gray-600">
+                    Modern hearing assistance devices
+                  </p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-full mb-3"
+                  >
+                    <i class="ri-message-3-line text-secondary"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">Sign Language</h3>
+                  <p class="text-sm text-gray-600">
+                    Learning resources and interpreters
+                  </p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-full mb-3"
+                  >
+                    <i class="ri-phone-line text-secondary"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">
+                    Communication Apps
+                  </h3>
+                  <p class="text-sm text-gray-600">Text-to-speech solutions</p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-full mb-3"
+                  >
+                    <i class="ri-notification-4-line text-secondary"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">Alert Systems</h3>
+                  <p class="text-sm text-gray-600">
+                    Visual and vibrating alerts
+                  </p>
+                </div>
+              </div>
+              <button
+                class="w-full px-4 py-2 bg-primary text-white font-medium rounded !rounded-button whitespace-nowrap"
+              >
+                Explore Hearing Resources
+              </button>
+            </div>
+          </div>
+          <!-- Mobility Support Section -->
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="relative h-64">
+              <img
+                src="https://imgs.search.brave.com/n7pMBb0UgV80ir3QUL8493FBTlmCJaXLk4akWNE5dfQ/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM5/MzE1Mjg5NC9waG90/by9hY2Nlc3NpYmxl/LXZlaGljbGUtZm9y/LWRpc2FibGVkLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1i/TkpoY2N3VGdzX0lY/Xy1NOWF1Sll2WG85/TF9CdFZ3THNwZVlT/cWJSaEVNPQ"
+                alt="Mobility Support Resources"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end"
+              >
+                <div class="p-6">
+                  <h2 class="text-2xl font-bold text-white mb-2">
+                    Mobility Support
+                  </h2>
+                  <p class="text-white/90">
+                    Equipment and accessibility solutions for enhanced mobility
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-purple-100 rounded-full mb-3"
+                  >
+                    <i class="ri-wheelchair-line text-purple-600"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">Wheelchairs</h3>
+                  <p class="text-sm text-gray-600">
+                    Manual and powered options
+                  </p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-purple-100 rounded-full mb-3"
+                  >
+                    <i class="ri-home-line text-purple-600"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">
+                    Home Modification
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    Accessibility renovation guides
+                  </p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-purple-100 rounded-full mb-3"
+                  >
+                    <i class="ri-car-line text-purple-600"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">
+                    Transport Solutions
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    Adapted vehicles and services
+                  </p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-purple-100 rounded-full mb-3"
+                  >
+                    <i class="ri-walk-line text-purple-600"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">Mobility Aids</h3>
+                  <p class="text-sm text-gray-600">
+                    Walking and support devices
+                  </p>
+                </div>
+              </div>
+              <button
+                onclick="launchMobilityResources()"
+                class="w-full px-4 py-2 bg-primary text-white font-medium rounded !rounded-button whitespace-nowrap"
+              >
+                Explore Mobility Resources
+              </button>
+            </div>
+          </div>
+          <!-- Speech Impairment Section -->
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="relative h-64">
+              <img
+                src="https://imgs.search.brave.com/MX6xPGkf-RrusQ_VIJ-BcJoPgq8f0qBGVx36tkyTu6s/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9jdXRlLWJveS13/aXRoLXNwZWVjaC10/aGVyYXBpc3QtaXMt/dGF1Z2h0LXByb25v/dW5jZS1sZXR0ZXJz/LXdvcmRzLXNvdW5k/c18xMTQzNTQtMjE0/MC5qcGc_c2VtdD1h/aXNfaHlicmlk"
+                alt="Speech Impairment Resources"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end"
+              >
+                <div class="p-6">
+                  <h2 class="text-2xl font-bold text-white mb-2">
+                    Speech Impairment
+                  </h2>
+                  <p class="text-white/90">
+                    Communication devices and therapy resources
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-amber-100 rounded-full mb-3"
+                  >
+                    <i class="ri-mic-line text-amber-600"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">Speech Devices</h3>
+                  <p class="text-sm text-gray-600">AAC technology solutions</p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-amber-100 rounded-full mb-3"
+                  >
+                    <i class="ri-message-2-line text-amber-600"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">Speech Therapy</h3>
+                  <p class="text-sm text-gray-600">
+                    Professional therapy resources
+                  </p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-amber-100 rounded-full mb-3"
+                  >
+                    <i class="ri-tablet-line text-amber-600"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">
+                    Communication Apps
+                  </h3>
+                  <p class="text-sm text-gray-600">Mobile assistance tools</p>
+                </div>
+                <div class="resource-card bg-gray-50 p-4 rounded-lg">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-amber-100 rounded-full mb-3"
+                  >
+                    <i class="ri-group-line text-amber-600"></i>
+                  </div>
+                  <h3 class="font-medium text-gray-900 mb-1">Support Groups</h3>
+                  <p class="text-sm text-gray-600">Community connections</p>
+                </div>
+              </div>
+              <!-- Modified button to launch the TTS application -->
+              <button
+                onclick="launchTTSApp()"
+                class="w-full px-4 py-2 bg-primary text-white font-medium rounded !rounded-button whitespace-nowrap"
+              >
+                Explore Speech Solutions
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Support Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">
+            Need Additional Support?
+          </h2>
+          <p class="text-lg text-gray-600 mb-8">
+            Our team is here to help you find the right resources and support
+            for your specific needs.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <button
+              class="px-6 py-3 bg-primary text-white font-medium rounded shadow-md hover:bg-primary/90 transition !rounded-button whitespace-nowrap"
+            >
+              <i class="ri-customer-service-2-line mr-2"></i>Contact Support
+            </button>
+            <button
+              class="px-6 py-3 bg-white text-primary border border-primary font-medium rounded shadow-sm hover:bg-gray-50 transition !rounded-button whitespace-nowrap"
+            >
+              <i class="ri-calendar-line mr-2"></i>Schedule Consultation
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function switchTab(tab) {
+        const buttons = document.querySelectorAll(".tab-button");
+        buttons.forEach((button) => {
+          button.classList.remove("active", "bg-primary", "text-white");
+          button.classList.add("bg-white", "hover:bg-gray-100");
+        });
+
+        const activeButton = document.querySelector(
+          `.tab-button[onclick="switchTab('${tab}')"]`
+        );
+        activeButton.classList.add("active", "bg-primary", "text-white");
+        activeButton.classList.remove("bg-white", "hover:bg-gray-100");
+
+        // Add your tab switching logic here
+      }
+
+      function launchTTSApp() {
+        // Create a modal to inform the user
+        const modal = document.createElement("div");
+        modal.className =
+          "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+        modal.innerHTML = `
+    <div class="bg-white rounded-lg p-6 max-w-md w-full">
+      <h3 class="text-xl font-bold text-gray-900 mb-4">Launching Text-to-Speech App</h3>
+      <p class="text-gray-600 mb-6">The Speak4Me Pro application will now launch to help with speech solutions.</p>
+      <div class="flex justify-end space-x-3">
+        <button onclick="this.parentElement.parentElement.remove()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition">
+          Cancel
+        </button>
+        <button onclick="startTTSApp()" class="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90 transition">
+          Continue
+        </button>
+      </div>
+    </div>
+  `;
+        document.body.appendChild(modal);
+      }
+
+      function launchMobilityResources() {
+        // Create a success message
+        const successMsg = document.createElement("div");
+        successMsg.className =
+          "fixed bottom-4 right-4 px-6 py-3 bg-green-500 text-white rounded shadow-lg z-50 animate-fade-in-up";
+        successMsg.textContent = "Launching Mobility Resources...";
+        document.body.appendChild(successMsg);
+
+        // Make an API call to the backend
+        fetch("http://127.0.0.1:5000/mobility-resources", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ action: "start" }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              successMsg.textContent =
+                "Mobility resources launched successfully!";
+            } else {
+              successMsg.textContent = "Failed to launch mobility resources";
+              successMsg.className = successMsg.className.replace(
+                "bg-green-500",
+                "bg-red-500"
+              );
+            }
+          })
+          .catch((error) => {
+            successMsg.textContent = "Error: " + error.message;
+            successMsg.className = successMsg.className.replace(
+              "bg-green-500",
+              "bg-red-500"
+            );
+          });
+
+        // Remove the message after 5 seconds
+        setTimeout(() => {
+          successMsg.remove();
+        }, 5000);
+      }
+
+      function startTTSApp() {
+        // Remove any existing modal
+        const existingModal = document.querySelector(".fixed.inset-0");
+        if (existingModal) existingModal.remove();
+
+        // Create success message
+        const successMsg = document.createElement("div");
+        successMsg.className =
+          "fixed bottom-4 right-4 px-6 py-3 bg-green-500 text-white rounded shadow-lg z-50 animate-fade-in-up";
+        successMsg.textContent = "Launching Speak4Me Pro...";
+        document.body.appendChild(successMsg);
+
+        // Make an API call to launch the Python script
+        fetch("http://127.0.0.1:5000/speech-solution", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ action: "start" }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              successMsg.textContent = "Application launched successfully!";
+            } else {
+              successMsg.textContent = "Failed to launch application";
+              successMsg.className = successMsg.className.replace(
+                "bg-green-500",
+                "bg-red-500"
+              );
+            }
+          })
+          .catch((error) => {
+            successMsg.textContent = "Error: " + error.message;
+            successMsg.className = successMsg.className.replace(
+              "bg-green-500",
+              "bg-red-500"
+            );
+          });
+
+        // Remove the message after 5 seconds
+        setTimeout(() => {
+          successMsg.remove();
+        }, 5000);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize with 'all' tab active
+        switchTab("all");
+
+        // Add animation for fade-in-up
+        const style = document.createElement("style");
+        style.textContent = `
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(1rem);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in-up {
+      animation: fadeInUp 0.3s ease-out;
+    }
+  `;
+        document.head.appendChild(style);
+      });
+    </script>
+  </body>
+</html>

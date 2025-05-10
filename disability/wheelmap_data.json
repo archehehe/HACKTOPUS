@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Brandenburg Gate",
+    "address": "Pariser Platz, 10117 Berlin, Germany",
+    "lat": 52.516275,
+    "lon": 13.377704,
+    "rating": 3,
+    "description": "Fully wheelchair accessible with ramps and accessible restrooms.",
+    "timestamp": "2023-05-15T10:30:00"
+  },
+  {
+    "name": "Berlin Cathedral",
+    "address": "Am Lustgarten, 10178 Berlin, Germany",
+    "lat": 52.519171,
+    "lon": 13.401112,
+    "rating": 2,
+    "description": "Partial access - main floor accessible but upper levels require stairs.",
+    "timestamp": "2023-05-18T14:45:00"
+  },
+  {
+    "name": "Checkpoint Charlie",
+    "address": "Friedrichstra\u00dfe 43-45, 10117 Berlin, Germany",
+    "lat": 52.507507,
+    "lon": 13.390374,
+    "rating": 1,
+    "description": "No wheelchair access - steps at entrance and narrow pathways.",
+    "timestamp": "2023-05-20T11:15:00"
+  }
+]

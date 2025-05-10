@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access Mate - Resources for Individuals with Disabilities</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4F86C6',secondary:'#7EB09B'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(1rem);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.animate-fade-in-up {
+animation: fadeInUp 0.3s ease-out;
+}
+html {
+scroll-behavior: smooth;
+}
+body {
+font-family: 'Inter', sans-serif;
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 24px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #4F86C6;
+}
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+.search-input:focus {
+outline: none;
+}
+.custom-radio {
+display: flex;
+align-items: center;
+cursor: pointer;
+}
+.custom-radio-input {
+appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #d1d5db;
+border-radius: 50%;
+margin-right: 8px;
+position: relative;
+}
+.custom-radio-input:checked {
+border-color: #4F86C6;
+}
+.custom-radio-input:checked::after {
+content: "";
+position: absolute;
+top: 3px;
+left: 3px;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background-color: #4F86C6;
+}
+.custom-checkbox {
+display: flex;
+align-items: center;
+cursor: pointer;
+}
+.custom-checkbox-input {
+appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+margin-right: 8px;
+position: relative;
+}
+.custom-checkbox-input:checked {
+border-color: #4F86C6;
+background-color: #4F86C6;
+}
+.custom-checkbox-input:checked::after {
+content: "";
+position: absolute;
+top: 2px;
+left: 6px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- Header Section -->
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<h1 class="text-3xl font-['Pacifico'] text-primary">Access Ease</h1>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a href="#" class="font-medium text-gray-800 hover:text-primary transition">Home</a>
+<a href="#" class="font-medium text-gray-800 hover:text-primary transition">Resources</a>
+<a href="#" class="font-medium text-gray-800 hover:text-primary transition">Community</a>
+<a href="#" class="font-medium text-gray-800 hover:text-primary transition">Support</a>
+</div>
+<div class="flex items-center space-x-4">
+<div class="flex items-center space-x-2">
+<span class="text-sm text-gray-600">High Contrast</span>
+<label class="custom-switch">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
+</div>
+<div class="flex items-center space-x-2">
+<button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200 transition !rounded-button">
+<i class="ri-font-size-2 ri-lg"></i>
+</button>
+<button class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200 transition !rounded-button">
+<i class="ri-user-line ri-lg"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-4 relative">
+<div class="relative">
+<input type="text" class="search-input w-full py-3 pl-12 pr-4 bg-gray-100 rounded border-none text-gray-800 placeholder-gray-500" placeholder="Search for resources, topics, or support...">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<i class="ri-search-line ri-lg text-gray-500"></i>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img src="https://readdy.ai/api/search-image?query=A%20welcoming%20and%20inclusive%20scene%20showing%20diverse%20people%20with%20various%20disabilities%20interacting%20in%20a%20supportive%20community%20environment.%20The%20image%20has%20a%20gradient%20from%20light%20blue%20to%20white%20on%20the%20left%20side%20for%20text%20placement%2C%20with%20soft%2C%20calming%20colors%20and%20a%20professional%2C%20uplifting%20atmosphere%20that%20emphasizes%20accessibility%20and%20support.&width=1920&height=600&seq=hero1&orientation=landscape" alt="Diverse community of people with disabilities" class="w-full h-full object-cover object-top">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+</div>
+<div class="container mx-auto px-4 py-20 relative z-10">
+<div class="w-full max-w-2xl">
+<h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Empowering Every Ability</h2>
+<p class="text-xl text-gray-700 mb-8">Access Ease provides comprehensive resources, support, and community for individuals with disabilities. We're dedicated to making life more accessible for everyone.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="index2.html" class="px-6 py-3 bg-primary text-white font-medium rounded shadow-md hover:bg-primary/90 transition !rounded-button whitespace-nowrap inline-flex items-center group">
+Find Resources
+<i class="ri-arrow-right-line ml-2 transform transition-transform group-hover:translate-x-1"></i>
+</a>
+<button class="px-6 py-3 bg-white text-primary border border-primary font-medium rounded shadow-sm hover:bg-gray-50 transition !rounded-button whitespace-nowrap" onclick="openJoinModal()">Join Our Community</button>
+<div id="joinModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+<div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative">
+<button onclick="closeJoinModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+<i class="ri-close-line ri-lg"></i>
+</button>
+<h3 class="text-2xl font-bold text-gray-900 mb-4">Join Our Community</h3>
+<p class="text-gray-600 mb-6">Connect with others, share experiences, and access exclusive resources.</p>
+<form id="joinForm" class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+<input type="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary">
+</div>
+<button type="submit" class="w-full px-6 py-3 bg-primary text-white font-medium rounded shadow-md hover:bg-primary/90 transition !rounded-button">Create Account</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Disability-Specific Categories -->
+<section id="resources" class="py-16 bg-white scroll-mt-16">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Specialized Support for Every Need</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Explore our dedicated resources tailored to specific disabilities and find the support that's right for you.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Hearing Impairments -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition group cursor-pointer" onclick="selectDisabilityType(this)" data-type="hearing">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20person%20using%20sign%20language%20with%20hearing%20aids%2C%20shown%20in%20a%20supportive%20environment%20with%20assistive%20technology%20devices%20for%20hearing%20impairments.%20The%20image%20has%20a%20clean%2C%20professional%20look%20with%20soft%20lighting%20and%20a%20simple%20background%20that%20emphasizes%20the%20person%20and%20technology.&width=600&height=400&seq=hearing1&orientation=landscape" alt="Person using sign language" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+</div>
+<div class="p-6">
+<div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+<i class="ri-ear-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Hearing Impairments</h3>
+<p class="text-gray-600 mb-4">Resources for hearing aids, sign language, and communication tools to enhance daily life.</p>
+<a href="#" class="text-primary font-medium flex items-center">
+Explore Resources
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+<!-- Speaking Impairments -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition group cursor-pointer" onclick="selectDisabilityType(this)" data-type="hearing">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20person%20using%20an%20augmentative%20and%20alternative%20communication%20%28AAC%29%20device%20or%20speech-generating%20tablet%2C%20shown%20in%20a%20supportive%20environment.%20The%20image%20has%20a%20clean%2C%20professional%20look%20with%20soft%20lighting%20and%20a%20simple%20background%20that%20emphasizes%20the%20person%20and%20technology.&width=600&height=400&seq=speaking1&orientation=landscape" alt="Person using speech device" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+</div>
+<div class="p-6">
+<div class="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full mb-4">
+<i class="ri-mic-line ri-xl text-secondary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Speaking Impairments</h3>
+<p class="text-gray-600 mb-4">Support for speech therapy, augmentative communication devices, and expression tools.</p>
+<a href="#" class="text-primary font-medium flex items-center">
+Explore Resources
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+<!-- Mobility Support -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition group cursor-pointer" onclick="selectDisabilityType(this)" data-type="hearing">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20person%20in%20a%20wheelchair%20navigating%20an%20accessible%20environment%20with%20ramps%20and%20supportive%20features.%20The%20image%20shows%20independence%20and%20mobility%2C%20with%20a%20clean%2C%20professional%20look%20and%20soft%20lighting%20that%20emphasizes%20accessibility%20features.&width=600&height=400&seq=mobility1&orientation=landscape" alt="Person in wheelchair" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+</div>
+<div class="p-6">
+<div class="w-12 h-12 flex items-center justify-center bg-purple-100 rounded-full mb-4">
+<i class="ri-wheelchair-line ri-xl text-purple-600"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Mobility Support</h3>
+<p class="text-gray-600 mb-4">Information on mobility aids, accessible housing, and transportation solutions.</p>
+<a href="#" class="text-primary font-medium flex items-center">
+Explore Resources
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+<!-- Visual Impairments -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition group cursor-pointer" onclick="selectDisabilityType(this)" data-type="hearing">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20person%20using%20a%20screen%20reader%20or%20braille%20display%2C%20with%20assistive%20technology%20for%20visual%20impairments.%20The%20image%20has%20a%20clean%2C%20professional%20look%20with%20soft%20lighting%20and%20a%20simple%20background%20that%20emphasizes%20the%20person%20and%20technology.&width=600&height=400&seq=visual1&orientation=landscape" alt="Person using screen reader" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-300">
+</div>
+<div class="p-6">
+<div class="w-12 h-12 flex items-center justify-center bg-amber-100 rounded-full mb-4">
+<i class="ri-eye-line ri-xl text-amber-600"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Visual Impairments</h3>
+<p class="text-gray-600 mb-4">Tools for screen readers, braille resources, and navigation assistance technologies.</p>
+<a href="#" class="text-primary font-medium flex items-center">
+Explore Resources
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Resource Library Preview -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+<div>
+<h2 class="text-3xl font-bold text-gray-900 mb-2">Resource Library</h2>
+<p class="text-lg text-gray-600">Discover articles, videos, and organizations to support your journey.</p>
+</div>
+<div class="mt-4 md:mt-0 flex items-center space-x-4">
+<div class="relative">
+<button id="resourceFilterBtn" class="flex items-center space-x-2 px-4 py-2 bg-white border border-gray-300 rounded shadow-sm hover:bg-gray-50 transition !rounded-button whitespace-nowrap">
+<span>Filter</span>
+<i class="ri-filter-3-line ri-sm"></i>
+</button>
+<div id="resourceFilterDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg p-4 z-10">
+<h4 class="font-medium text-gray-900 mb-3">Filter by Category</h4>
+<div class="space-y-2 mb-4">
+<label class="custom-checkbox">
+<input type="checkbox" class="custom-checkbox-input">
+<span>Hearing Impairments</span>
+</label>
+<label class="custom-checkbox">
+<input type="checkbox" class="custom-checkbox-input">
+<span>Speaking Impairments</span>
+</label>
+<label class="custom-checkbox">
+<input type="checkbox" class="custom-checkbox-input">
+<span>Mobility Support</span>
+</label>
+<label class="custom-checkbox">
+<input type="checkbox" class="custom-checkbox-input">
+<span>Visual Impairments</span>
+</label>
+</div>
+<h4 class="font-medium text-gray-900 mb-3">Content Type</h4>
+<div class="space-y-2 mb-4">
+<label class="custom-radio">
+<input type="radio" name="contentType" class="custom-radio-input">
+<span>All Content</span>
+</label>
+<label class="custom-radio">
+<input type="radio" name="contentType" class="custom-radio-input">
+<span>Articles</span>
+</label>
+<label class="custom-radio">
+<input type="radio" name="contentType" class="custom-radio-input">
+<span>Videos</span>
+</label>
+<label class="custom-radio">
+<input type="radio" name="contentType" class="custom-radio-input">
+<span>Organizations</span>
+</label>
+</div>
+<button class="w-full px-4 py-2 bg-primary text-white font-medium rounded !rounded-button whitespace-nowrap">Apply Filters</button>
+</div>
+</div>
+<button class="px-4 py-2 bg-primary text-white font-medium rounded shadow-md hover:bg-primary/90 transition !rounded-button whitespace-nowrap">View All Resources</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Article -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20image%20showing%20assistive%20technology%20devices%20for%20people%20with%20disabilities%2C%20displayed%20on%20a%20clean%20desk%20with%20good%20lighting.%20The%20image%20has%20a%20modern%2C%20helpful%20appearance%20with%20soft%20colors%20and%20clear%20focus%20on%20the%20technology.&width=600&height=400&seq=article1&orientation=landscape" alt="Assistive technology devices" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<div class="flex items-center mb-3">
+<span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">Article</span>
+<span class="ml-2 text-sm text-gray-500">April 15, 2025</span>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Latest Advances in Assistive Technology</h3>
+<p class="text-gray-600 mb-4">Discover the newest innovations in assistive technology that are transforming lives and increasing independence.</p>
+<a href="#" class="text-primary font-medium flex items-center">
+Read Article
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+<!-- Video -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="h-48 overflow-hidden relative group">
+<img src="https://readdy.ai/api/search-image?query=A%20person%20in%20a%20wheelchair%20demonstrating%20adaptive%20sports%20techniques%2C%20shown%20in%20an%20accessible%20gym%20or%20sports%20facility.%20The%20image%20has%20an%20energetic%2C%20inspiring%20quality%20with%20good%20lighting%20and%20clear%20focus%20on%20the%20person%20and%20adaptive%20equipment.&width=600&height=400&seq=video1&orientation=landscape" alt="Adaptive sports demonstration" class="w-full h-full object-cover object-top">
+<div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+<div class="w-16 h-16 flex items-center justify-center bg-white bg-opacity-80 rounded-full">
+<i class="ri-play-fill ri-2x text-primary"></i>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center mb-3">
+<span class="px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full">Video</span>
+<span class="ml-2 text-sm text-gray-500">April 22, 2025</span>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Adaptive Sports: Breaking Barriers</h3>
+<p class="text-gray-600 mb-4">Learn about adaptive sports programs that are creating inclusive opportunities for athletes of all abilities.</p>
+<a href="#" class="text-primary font-medium flex items-center">
+Watch Video
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+<!-- Organization -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20image%20of%20a%20diverse%20group%20of%20people%20with%20and%20without%20visible%20disabilities%20working%20together%20in%20a%20modern%20office%20environment.%20The%20image%20shows%20collaboration%20and%20inclusion%20with%20a%20clean%2C%20bright%20aesthetic%20and%20professional%20atmosphere.&width=600&height=400&seq=org1&orientation=landscape" alt="Inclusive workplace" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<div class="flex items-center mb-3">
+<span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">Organization</span>
+<span class="ml-2 text-sm text-gray-500">National</span>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Inclusive Employment Network</h3>
+<p class="text-gray-600 mb-4">Connecting employers with qualified candidates with disabilities and providing workplace accommodation resources.</p>
+<a href="#" class="text-primary font-medium flex items-center">
+Visit Organization
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Community Section -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Join Our Supportive Community</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Connect with others who understand your experiences, share insights, and build meaningful relationships.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Community Stats -->
+<div class="bg-primary bg-opacity-5 rounded-lg p-8">
+<h3 class="text-xl font-semibold text-gray-900 mb-6">Our Growing Community</h3>
+<div class="space-y-6">
+<div class="flex items-center">
+<div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+<i class="ri-user-line ri-xl text-primary"></i>
+</div>
+<div class="ml-4">
+<p class="text-2xl font-bold text-primary">15,420+</p>
+<p class="text-gray-600">Active Members</p>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+<i class="ri-message-3-line ri-xl text-primary"></i>
+</div>
+<div class="ml-4">
+<p class="text-2xl font-bold text-primary">3,850+</p>
+<p class="text-gray-600">Monthly Discussions</p>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+<i class="ri-global-line ri-xl text-primary"></i>
+</div>
+<div class="ml-4">
+<p class="text-2xl font-bold text-primary">65+</p>
+<p class="text-gray-600">Countries Represented</p>
+</div>
+</div>
+</div>
+<button class="mt-8 w-full px-4 py-3 bg-primary text-white font-medium rounded shadow-md hover:bg-primary/90 transition !rounded-button whitespace-nowrap">Join Our Community</button>
+</div>
+<!-- Latest Discussions -->
+<div class="bg-white rounded-lg shadow-md p-8">
+<h3 class="text-xl font-semibold text-gray-900 mb-6">Latest Discussions</h3>
+<div class="space-y-6">
+<div class="pb-4 border-b border-gray-200">
+<h4 class="font-medium text-gray-900 mb-1">Navigating Public Transportation</h4>
+<p class="text-gray-600 text-sm mb-2">Tips and experiences for wheelchair users on public transit systems.</p>
+<div class="flex items-center text-sm text-gray-500">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20woman%20with%20glasses%2C%20smiling%20warmly%20at%20the%20camera%20with%20a%20neutral%20background.%20The%20image%20is%20cropped%20to%20show%20just%20her%20face%20and%20shoulders%2C%20with%20clean%20lighting%20and%20professional%20appearance.&width=100&height=100&seq=avatar1&orientation=squarish" alt="Sarah Mitchell" class="w-6 h-6 rounded-full mr-2 object-cover object-top">
+<span>Sarah Mitchell</span>
+<span class="mx-2">•</span>
+<span>42 replies</span>
+<span class="mx-2">•</span>
+<span>2 hours ago</span>
+</div>
+</div>
+<div class="pb-4 border-b border-gray-200">
+<h4 class="font-medium text-gray-900 mb-1">New Screen Reader Software Review</h4>
+<p class="text-gray-600 text-sm mb-2">Comparing the latest screen reader options for visual impairments.</p>
+<div class="flex items-center text-sm text-gray-500">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20man%20with%20a%20beard%2C%20smiling%20confidently%20at%20the%20camera%20with%20a%20neutral%20background.%20The%20image%20is%20cropped%20to%20show%20just%20his%20face%20and%20shoulders%2C%20with%20clean%20lighting%20and%20professional%20appearance.&width=100&height=100&seq=avatar2&orientation=squarish" alt="David Thompson" class="w-6 h-6 rounded-full mr-2 object-cover object-top">
+<span>David Thompson</span>
+<span class="mx-2">•</span>
+<span>18 replies</span>
+<span class="mx-2">•</span>
+<span>Yesterday</span>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">Workplace Accommodation Success Stories</h4>
+<p class="text-gray-600 text-sm mb-2">Share your positive experiences with workplace accommodations.</p>
+<div class="flex items-center text-sm text-gray-500">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20adult%20with%20short%20dark%20hair%2C%20smiling%20warmly%20at%20the%20camera%20with%20a%20neutral%20background.%20The%20image%20is%20cropped%20to%20show%20just%20their%20face%20and%20shoulders%2C%20with%20clean%20lighting%20and%20professional%20appearance.&width=100&height=100&seq=avatar3&orientation=squarish" alt="Alex Rivera" class="w-6 h-6 rounded-full mr-2 object-cover object-top">
+<span>Alex Rivera</span>
+<span class="mx-2">•</span>
+<span>36 replies</span>
+<span class="mx-2">•</span>
+<span>2 days ago</span>
+</div>
+</div>
+</div>
+<a href="#" class="mt-6 inline-block text-primary font-medium">View All Discussions →</a>
+</div>
+<!-- Testimonials -->
+<div class="bg-white rounded-lg shadow-md p-8">
+<h3 class="text-xl font-semibold text-gray-900 mb-6">Community Voices</h3>
+<div id="testimonialSlider" class="relative">
+<div class="testimonial-slide">
+<div class="mb-4">
+<div class="flex text-amber-400">
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+</div>
+</div>
+<p class="text-gray-600 italic mb-6">"Finding Access Ease changed everything for me. The resources helped me navigate my hearing loss journey, and the community made me feel less alone. I've made lifelong friends here."</p>
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20woman%20in%20her%2040s%20with%20hearing%20aids%20visible%2C%20smiling%20warmly%20at%20the%20camera%20with%20a%20neutral%20background.%20The%20image%20is%20cropped%20to%20show%20just%20her%20face%20and%20shoulders%2C%20with%20clean%20lighting%20and%20professional%20appearance.&width=100&height=100&seq=avatar4&orientation=squarish" alt="Jennifer Wilson" class="w-12 h-12 rounded-full mr-3 object-cover object-top">
+<div>
+<p class="font-medium text-gray-900">Jennifer Wilson</p>
+<p class="text-sm text-gray-500">Member since 2023</p>
+</div>
+</div>
+</div>
+<div class="testimonial-slide hidden">
+<div class="mb-4">
+<div class="flex text-amber-400">
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+</div>
+</div>
+<p class="text-gray-600 italic mb-6">"The adaptive technology resources on Access Ease helped me find the perfect solution for my mobility challenges. I'm now more independent than I've been in years."</p>
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20man%20in%20his%2030s%20using%20a%20wheelchair%2C%20smiling%20confidently%20at%20the%20camera%20with%20a%20neutral%20background.%20The%20image%20is%20cropped%20to%20show%20just%20his%20face%20and%20upper%20body%2C%20with%20clean%20lighting%20and%20professional%20appearance.&width=100&height=100&seq=avatar5&orientation=squarish" alt="Michael Chen" class="w-12 h-12 rounded-full mr-3 object-cover object-top">
+<div>
+<p class="font-medium text-gray-900">Michael Chen</p>
+<p class="text-sm text-gray-500">Member since 2024</p>
+</div>
+</div>
+</div>
+<div class="testimonial-slide hidden">
+<div class="mb-4">
+<div class="flex text-amber-400">
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+<i class="ri-star-fill ri-sm"></i>
+</div>
+</div>
+<p class="text-gray-600 italic mb-6">"As a parent of a child with a speech impairment, the resources and support from this community have been invaluable. We've seen incredible progress thanks to the expert advice shared here."</p>
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20woman%20in%20her%2030s%20with%20long%20hair%2C%20smiling%20warmly%20at%20the%20camera%20with%20a%20neutral%20background.%20The%20image%20is%20cropped%20to%20show%20just%20her%20face%20and%20shoulders%2C%20with%20clean%20lighting%20and%20professional%20appearance.&width=100&height=100&seq=avatar6&orientation=squarish" alt="Emily Rodriguez" class="w-12 h-12 rounded-full mr-3 object-cover object-top">
+<div>
+<p class="font-medium text-gray-900">Emily Rodriguez</p>
+<p class="text-sm text-gray-500">Member since 2022</p>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-6 space-x-2">
+<button class="testimonial-dot w-3 h-3 rounded-full bg-primary"></button>
+<button class="testimonial-dot w-3 h-3 rounded-full bg-gray-300"></button>
+<button class="testimonial-dot w-3 h-3 rounded-full bg-gray-300"></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Accessibility Features -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Accessibility at Our Core</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">We're committed to making our platform accessible to everyone. Explore the features designed to enhance your experience.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="w-14 h-14 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+<i class="ri-eye-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Screen Reader Compatible</h3>
+<p class="text-gray-600">Our site is fully optimized for screen readers with proper ARIA labels and semantic HTML.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="w-14 h-14 flex items-center justify-center bg-green-100 rounded-full mb-4">
+<i class="ri-contrast-2-line ri-xl text-secondary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">High Contrast Mode</h3>
+<p class="text-gray-600">Toggle high contrast mode to enhance visibility and readability for visual impairments.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="w-14 h-14 flex items-center justify-center bg-purple-100 rounded-full mb-4">
+<i class="ri-keyboard-line ri-xl text-purple-600"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Keyboard Navigation</h3>
+<p class="text-gray-600">Navigate our entire site using just your keyboard with intuitive focus indicators.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="w-14 h-14 flex items-center justify-center bg-amber-100 rounded-full mb-4">
+<i class="ri-font-size-2 ri-xl text-amber-600"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Adjustable Text Size</h3>
+<p class="text-gray-600">Easily increase or decrease text size to suit your reading preferences.</p>
+</div>
+</div>
+<div class="mt-12 text-center">
+<a href="#" class="inline-block px-6 py-3 bg-white border border-gray-300 text-gray-800 font-medium rounded shadow-sm hover:bg-gray-50 transition !rounded-button whitespace-nowrap">View Our Accessibility Statement</a>
+</div>
+</div>
+</section>
+<!-- Contact & Support -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<div>
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+<p class="text-lg text-gray-600 mb-8">Have questions or need assistance? Our support team is here to help you navigate your journey.</p>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mt-1">
+<i class="ri-mail-line text-primary"></i>
+</div>
+<div class="ml-4">
+<h3 class="font-medium text-gray-900">Email Us</h3>
+<p class="text-gray-600 mt-1">support@accessease.org</p>
+<p class="text-gray-600">info@accessease.org</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mt-1">
+<i class="ri-phone-line text-primary"></i>
+</div>
+<div class="ml-4">
+<h3 class="font-medium text-gray-900">Call Us</h3>
+<p class="text-gray-600 mt-1">Support: (800) 555-0123</p>
+<p class="text-gray-600">Emergency: (800) 555-0199</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mt-1">
+<i class="ri-time-line text-primary"></i>
+</div>
+<div class="ml-4">
+<h3 class="font-medium text-gray-900">Hours of Operation</h3>
+<p class="text-gray-600 mt-1">Monday - Friday: 8:00 AM - 8:00 PM EST</p>
+<p class="text-gray-600">Saturday: 9:00 AM - 5:00 PM EST</p>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="font-medium text-gray-900 mb-4">Follow Us</h3>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition">
+<i class="ri-twitter-x-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition">
+<i class="ri-instagram-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition">
+<i class="ri-youtube-fill"></i>
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="bg-white rounded-lg shadow-md p-8">
+<h3 class="text-xl font-semibold text-gray-900 mb-6">Send Us a Message</h3>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+<input type="text" id="firstName" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary transition">
+</div>
+<div>
+<label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+<input type="text" id="lastName" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary transition">
+</div>
+</div>
+<div class="mb-6">
+<label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+<input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary transition">
+</div>
+<div class="mb-6">
+<label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+<input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary transition">
+</div>
+<div class="mb-6">
+<label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+<textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary transition"></textarea>
+</div>
+<div class="mb-6">
+<label class="custom-checkbox">
+<input type="checkbox" id="agreementCheckbox" class="custom-checkbox-input" disabled>
+<span class="text-sm text-gray-700 cursor-pointer" id="agreementText">I agree to the <button type="button" class="text-primary hover:underline" onclick="openPolicyModal()">privacy policy and terms of service</button></span>
+</label>
+</div>
+<div id="policyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+<div class="bg-white rounded-lg max-w-2xl w-full mx-4 relative">
+<div class="p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-2xl font-bold text-gray-900">Legal Documents</h3>
+<button onclick="closePolicyModal()" class="text-gray-500 hover:text-gray-700">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div class="flex border-b border-gray-200 mb-6">
+<button id="privacyTab" class="px-6 py-3 text-primary border-b-2 border-primary font-medium" onclick="switchTab('privacy')">Privacy Policy</button>
+<button id="termsTab" class="px-6 py-3 text-gray-500 font-medium" onclick="switchTab('terms')">Terms of Service</button>
+</div>
+<div class="h-96 overflow-y-auto">
+<div id="privacyContent" class="space-y-4">
+<h4 class="text-xl font-semibold text-gray-900">Privacy Policy</h4>
+<p class="text-gray-600">Last updated: April 28, 2025</p>
+<div class="space-y-4 text-gray-600">
+<p>At Access Ease, we take your privacy seriously. This Privacy Policy describes how we collect, use, and protect your personal information.</p>
+<h5 class="font-medium text-gray-900">Information We Collect</h5>
+<p>We collect information that you provide directly to us, including:</p>
+<ul class="list-disc pl-6 space-y-2">
+<li>Name and contact information</li>
+<li>Account credentials</li>
+<li>Communication preferences</li>
+<li>Support inquiries and feedback</li>
+</ul>
+<h5 class="font-medium text-gray-900">How We Use Your Information</h5>
+<p>We use the information we collect to:</p>
+<ul class="list-disc pl-6 space-y-2">
+<li>Provide and improve our services</li>
+<li>Communicate with you</li>
+<li>Personalize your experience</li>
+<li>Ensure platform security</li>
+</ul>
+</div>
+</div>
+<div id="termsContent" class="hidden space-y-4">
+<h4 class="text-xl font-semibold text-gray-900">Terms of Service</h4>
+<p class="text-gray-600">Last updated: April 28, 2025</p>
+<div class="space-y-4 text-gray-600">
+<p>By using Access Ease, you agree to these terms of service. Please read them carefully.</p>
+<h5 class="font-medium text-gray-900">User Responsibilities</h5>
+<ul class="list-disc pl-6 space-y-2">
+<li>Provide accurate information</li>
+<li>Maintain account security</li>
+<li>Respect other users</li>
+<li>Comply with applicable laws</li>
+</ul>
+<h5 class="font-medium text-gray-900">Service Usage</h5>
+<ul class="list-disc pl-6 space-y-2">
+<li>Access Ease provides resources and community features</li>
+<li>We may modify or discontinue services</li>
+<li>Users must not misuse our services</li>
+<li>We reserve the right to terminate accounts</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="p-6 bg-gray-50 rounded-b-lg">
+<button onclick="acceptPolicies()" class="w-full px-6 py-3 bg-primary text-white font-medium rounded shadow-md hover:bg-primary/90 transition !rounded-button whitespace-nowrap">I Understand and Accept</button>
+</div>
+</div>
+</div>
+</div>
+<button type="submit" id="contactSubmitBtn" class="w-full px-6 py-3 bg-primary text-white font-medium rounded shadow-md hover:bg-primary/90 transition !rounded-button whitespace-nowrap">Send Message</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.querySelector('#contactSubmitBtn')?.closest('form');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const firstName = document.getElementById('firstName');
+      const lastName = document.getElementById('lastName');
+      const email = document.getElementById('email');
+      const subject = document.getElementById('subject');
+      const message = document.getElementById('message');
+      const agreementCheckbox = document.getElementById('agreementCheckbox');
+      
+      let isValid = true;
+      
+      [firstName, lastName, email, subject, message].forEach(field => {
+        if (!field.value.trim()) {
+          field.classList.add('border-red-500');
+          isValid = false;
+        } else {
+          field.classList.remove('border-red-500');
+        }
+      });
+      
+      if (!agreementCheckbox.checked) {
+        agreementCheckbox.closest('.custom-checkbox').classList.add('text-red-500');
+        isValid = false;
+      } else {
+        agreementCheckbox.closest('.custom-checkbox').classList.remove('text-red-500');
+      }
+      
+      if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        email.classList.add('border-red-500');
+        isValid = false;
+      }
+      
+      if (isValid) {
+        const notification = document.createElement('div');
+        notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50 animate-fade-in-up';
+        notification.textContent = 'Your message has been sent successfully. Our team will respond within 24-48 hours.';
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          notification.remove();
+        }, 5000);
+        
+        contactForm.reset();
+      }
+    });
+  }
+});
+</script>
+<!-- Newsletter -->
+<section class="py-16 bg-primary bg-opacity-5">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Stay Updated</h2>
+<p class="text-lg text-gray-600 mb-8">Subscribe to our newsletter to receive the latest resources, community updates, and accessibility news.</p>
+<form class="flex flex-col sm:flex-row gap-4">
+<input type="email" placeholder="Enter your email address" class="flex-grow px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary transition">
+<button type="submit" class="px-6 py-3 bg-primary text-white font-medium rounded shadow-md hover:bg-primary/90 transition !rounded-button whitespace-nowrap">Subscribe</button>
+</form>
+<p class="text-sm text-gray-500 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+<div>
+<h3 class="text-xl font-['Pacifico'] text-white mb-4">Access Ease</h3>
+<p class="text-gray-400 mb-6">Empowering individuals with disabilities through resources, community, and support.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white transition">
+<i class="ri-facebook-fill ri-lg"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition">
+<i class="ri-twitter-x-fill ri-lg"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition">
+<i class="ri-instagram-fill ri-lg"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition">
+<i class="ri-youtube-fill ri-lg"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Resources</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Community</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Support</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Resources</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition">Hearing Impairments</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Speaking Impairments</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Mobility Support</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Visual Impairments</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Assistive Technology</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Legal Rights</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+<ul class="space-y-2">
+<li class="flex items-start">
+<i class="ri-mail-line mt-1 mr-2 text-gray-400"></i>
+<span class="text-gray-400">support@accessease.org</span>
+</li>
+<li class="flex items-start">
+<i class="ri-phone-line mt-1 mr-2 text-gray-400"></i>
+<span class="text-gray-400">(800) 555-0123</span>
+</li>
+<li class="flex items-start">
+<i class="ri-map-pin-line mt-1 mr-2 text-gray-400"></i>
+<span class="text-gray-400">123 Accessibility Way<br>Inclusion City, IC 10001</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Access Ease. All rights reserved.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition">Accessibility Statement</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition">Cookie Policy</a>
+</div>
+<div class="mt-4 md:mt-0 flex items-center space-x-4">
+<i class="ri-visa-fill ri-lg text-gray-400"></i>
+<i class="ri-mastercard-fill ri-lg text-gray-400"></i>
+<i class="ri-paypal-fill ri-lg text-gray-400"></i>
+<i class="ri-apple-fill ri-lg text-gray-400"></i>
+</div>
+</div>
+</div>
+</footer>
+<script>
+function openJoinModal() {
+document.getElementById('joinModal').classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+}
+function closeJoinModal() {
+document.getElementById('joinModal').classList.add('hidden');
+document.body.style.overflow = 'auto';
+}
+document.getElementById('joinForm')?.addEventListener('submit', function(e) {
+e.preventDefault();
+// Add your form submission logic here
+closeJoinModal();
+showNotification('Welcome to our community! Check your email for next steps.');
+});
+function showNotification(message) {
+const notification = document.createElement('div');
+notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50 animate-fade-in-up';
+notification.textContent = message;
+document.body.appendChild(notification);
+setTimeout(() => {
+notification.remove();
+}, 5000);
+}
+function selectDisabilityType(element) {
+const type = element.dataset.type;
+const cards = document.querySelectorAll('[data-type]');
+cards.forEach(card => {
+card.classList.remove('ring-2', 'ring-primary');
+});
+element.classList.add('ring-2', 'ring-primary');
+showNotification(`You've selected ${type} resources. Redirecting to specialized content...`);
+setTimeout(() => {
+// Add your redirect logic here
+// window.location.href = `/${type}-resources`;
+}, 1500);
+}
+document.addEventListener('DOMContentLoaded', function() {
+// Resource Filter Dropdown
+const resourceFilterBtn = document.getElementById('resourceFilterBtn');
+const resourceFilterDropdown = document.getElementById('resourceFilterDropdown');
+if (resourceFilterBtn && resourceFilterDropdown) {
+resourceFilterBtn.addEventListener('click', function() {
+resourceFilterDropdown.classList.toggle('hidden');
+});
+document.addEventListener('click', function(event) {
+if (!resourceFilterBtn.contains(event.target) && !resourceFilterDropdown.contains(event.target)) {
+resourceFilterDropdown.classList.add('hidden');
+}
+});
+}
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Testimonial Slider
+const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+const testimonialDots = document.querySelectorAll('.testimonial-dot');
+let currentSlide = 0;
+function showSlide(index) {
+testimonialSlides.forEach((slide, i) => {
+slide.classList.toggle('hidden', i !== index);
+});
+testimonialDots.forEach((dot, i) => {
+dot.classList.toggle('bg-primary', i === index);
+dot.classList.toggle('bg-gray-300', i !== index);
+});
+currentSlide = index;
+}
+testimonialDots.forEach((dot, i) => {
+dot.addEventListener('click', () => {
+showSlide(i);
+});
+});
+// Auto slide every 5 seconds
+setInterval(() => {
+let nextSlide = (currentSlide + 1) % testimonialSlides.length;
+showSlide(nextSlide);
+}, 5000);
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Custom checkbox and radio functionality
+const customCheckboxes = document.querySelectorAll('.custom-checkbox-input');
+customCheckboxes.forEach(checkbox => {
+checkbox.addEventListener('click', function() {
+// Already handled by default behavior, just adding for completeness
+});
+});
+// Policy modal functionality
+window.openPolicyModal = function() {
+document.getElementById('policyModal').classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+};
+window.closePolicyModal = function() {
+document.getElementById('policyModal').classList.add('hidden');
+document.body.style.overflow = 'auto';
+};
+window.switchTab = function(tab) {
+const privacyTab = document.getElementById('privacyTab');
+const termsTab = document.getElementById('termsTab');
+const privacyContent = document.getElementById('privacyContent');
+const termsContent = document.getElementById('termsContent');
+if (tab === 'privacy') {
+privacyTab.classList.add('text-primary', 'border-b-2', 'border-primary');
+privacyTab.classList.remove('text-gray-500');
+termsTab.classList.remove('text-primary', 'border-b-2', 'border-primary');
+termsTab.classList.add('text-gray-500');
+privacyContent.classList.remove('hidden');
+termsContent.classList.add('hidden');
+} else {
+termsTab.classList.add('text-primary', 'border-b-2', 'border-primary');
+termsTab.classList.remove('text-gray-500');
+privacyTab.classList.remove('text-primary', 'border-b-2', 'border-primary');
+privacyTab.classList.add('text-gray-500');
+termsContent.classList.remove('hidden');
+privacyContent.classList.add('hidden');
+}
+};
+window.acceptPolicies = function() {
+const checkbox = document.getElementById('agreementCheckbox');
+checkbox.disabled = false;
+checkbox.checked = true;
+closePolicyModal();
+showNotification('You have accepted the privacy policy and terms of service');
+};
+const customRadios = document.querySelectorAll('.custom-radio-input');
+customRadios.forEach(radio => {
+radio.addEventListener('click', function() {
+// Already handled by default behavior, just adding for completeness
+});
+});
+});
+</script>
+</body>
+</html>
