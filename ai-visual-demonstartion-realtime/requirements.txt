@@ -1,0 +1,6 @@
+flask==2.3.2
+torch==2.0.1
+transformers==4.30.2
+pillow==10.0.0
+opencv-python
+googletrans==4.0.0rc1
