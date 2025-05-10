@@ -1,0 +1,8 @@
+2025-04-29 06:38:13 - Emergency: POLICE called. Message: 
+2025-04-29 06:38:15 - Emergency: FIRE called. Message: 
+2025-04-29 06:38:16 - Emergency: MEDICAL called. Message: 
+2025-04-29 06:38:18 - Emergency: CUSTOM called. Message: 
+2025-04-29 07:11:30 - Emergency: POLICE called. Message: 
+2025-04-29 07:11:31 - Emergency: FIRE called. Message: 
+2025-04-29 07:11:32 - Emergency: MEDICAL called. Message: 
+2025-04-29 07:11:34 - Emergency: CUSTOM called. Message: 

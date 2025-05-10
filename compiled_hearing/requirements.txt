@@ -1,0 +1,7 @@
+Flask
+SpeechRecognition
+vosk
+noisereduce
+soundfile
+numpy
+requests

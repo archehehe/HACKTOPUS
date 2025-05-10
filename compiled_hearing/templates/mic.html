@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Speech to Text</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+    
+        h1 {
+            text-align: center;
+            color: #3a0ca3;
+            margin-bottom: 30px;
+        }
+    
+        label {
+            font-weight: bold;
+        }
+    
+        select {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            width: 200px;
+        }
+    
+        button {
+            padding: 10px 18px;
+            background-color: #4361ee;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+    
+        button:hover {
+            background-color: #3a0ca3;
+        }
+    
+        .hidden {
+            display: none;
+        }
+    
+        #visual-feedback {
+            text-align: center;
+            margin-top: 30px;
+        }
+    
+        .pulse-circle {
+            width: 30px;
+            height: 30px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background-color: #4361ee;
+            animation: pulse 1.5s infinite;
+        }
+    
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+    
+        .sound-wave {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height: 50px;
+            margin: 20px 0;
+        }
+    
+        .sound-wave .bar {
+            width: 6px;
+            height: 10px;
+            background: #4361ee;
+            border-radius: 4px;
+            transition: height 0.2s ease;
+        }
+    
+        #status-message {
+            font-weight: bold;
+            color: #4361ee;
+            text-align: center;
+            margin-top: 10px;
+        }
+    
+        .transcription-result {
+            max-width: 700px;
+            margin: 20px auto;
+            background: #f1f3f5;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #4361ee;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            font-size: 16px;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Live Speech to Text Transcription</h1>
+
+    <div>
+        <label for="language-select">Select Language:</label>
+        <select id="language-select">
+            <option value="en" data-code="en-US">English</option>
+            <option value="hi" data-code="hi-IN">Hindi</option>
+            <option value="es" data-code="es-ES">Spanish</option>
+            <option value="fr" data-code="fr-FR">French</option>
+            <option value="de" data-code="de-DE">German</option>
+        </select>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <button id="start-btn">Start Recording</button>
+        <button id="stop-btn" class="hidden">Stop Recording</button>
+        <button id="save-btn" class="hidden">Save Transcription</button>
+    </div>
+    <div id="visual-feedback">
+        <div class="pulse-circle" id="emotion-circle"></div>
+        <div id="sound-alerts"></div>
+    </div>
+    <div id="visual-feedback">
+    <div class="sound-wave">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div id="status-message">Ready to listen...</div>
+</div>
+
+<style>
+.sound-wave {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    height: 50px;
+    margin: 20px 0;
+}
+.sound-wave .bar {
+    width: 8px;
+    height: 10px;
+    background: #4361ee;
+    border-radius: 4px;
+    transition: height 0.2s ease;
+}
+#status-message {
+    text-align: center;
+    font-weight: bold;
+    color: #4361ee;
+}
+</style>
+
+<script>
+// Add to your existing JavaScript
+function animateSoundWave() {
+    const bars = document.querySelectorAll('.sound-wave .bar');
+    setInterval(() => {
+        bars.forEach(bar => {
+            bar.style.height = `${10 + Math.random() * 40}px`;
+        });
+    }, 200);
+}
+animateSoundWave();
+</script>
+
+
+    <div id="live-transcription" style="margin-top:20px;">
+        <p class="transcription-result hidden"></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Assistance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .emergency-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .emergency-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .police {
+            background-color: #3498db;
+            color: white;
+        }
+        .fire {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .medical {
+            background-color: #2ecc71;
+            color: white;
+        }
+        .custom {
+            background-color: #f39c12;
+            color: white;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="emergency-container">
+        <h1>Emergency Assistance</h1>
+        <p>Select the type of emergency and add any important details:</p>
+        
+        <form method="POST" action="{{ url_for('emergency') }}">
+            <input type="hidden" name="emergency_type" value="police">
+            <button type="submit" class="emergency-btn police">Police Emergency</button>
+        </form>
+        
+        <form method="POST" action="{{ url_for('emergency') }}">
+            <input type="hidden" name="emergency_type" value="fire">
+            <button type="submit" class="emergency-btn fire">Fire Emergency</button>
+        </form>
+        
+        <form method="POST" action="{{ url_for('emergency') }}">
+            <input type="hidden" name="emergency_type" value="medical">
+            <button type="submit" class="emergency-btn medical">Medical Emergency</button>
+        </form>
+        
+        <form method="POST" action="{{ url_for('emergency') }}">
+            <input type="hidden" name="emergency_type" value="custom">
+            <textarea name="message" placeholder="Describe your emergency..."></textarea>
+            <button type="submit" class="emergency-btn custom">Send Custom Emergency Alert</button>
+        </form>
+        
+        <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>

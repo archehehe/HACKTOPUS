@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech & Video Transcription</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+    
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        h1 {
+            text-align: center;
+            color: #3a0ca3;
+            margin-bottom: 30px;
+        }
+    
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    
+        .tab-btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+    
+        .tab-btn.active,
+        .tab-btn:hover {
+            background-color: #4361ee;
+            color: white;
+        }
+    
+        .tab-content {
+            display: none;
+        }
+    
+        .tab-content.active {
+            display: block;
+        }
+    
+        .upload-area {
+            border: 2px dashed #ccc;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+    
+        .upload-area i {
+            font-size: 40px;
+            color: #4361ee;
+        }
+    
+        .upload-area p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+    
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #4361ee;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    
+        .btn:hover {
+            background-color: #3a0ca3;
+        }
+    
+        .form-group {
+            margin-top: 20px;
+        }
+    
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    
+        .progress-container {
+            margin-top: 20px;
+        }
+    
+        .progress-bar {
+            height: 20px;
+            width: 0%;
+            background-color: #4361ee;
+            border-radius: 5px;
+        }
+    
+        #progress-text {
+            display: block;
+            text-align: right;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+    
+        .transcription-result {
+            margin-top: 20px;
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #4361ee;
+        }
+    
+        .transcription-text {
+            white-space: pre-wrap;
+            font-size: 15px;
+        }
+    
+        .hidden {
+            display: none;
+        }
+    
+        .alert {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+    
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+    
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    
+        .flash-messages .flash-success {
+            background-color: #d4edda;
+            padding: 10px;
+            border-radius: 5px;
+            color: #155724;
+            margin-top: 10px;
+        }
+    
+        .flash-messages .flash-error {
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            color: #721c24;
+            margin-top: 10px;
+        }
+    
+        .emergency-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #d00000;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    
+        h2 {
+            text-align: center;
+            color: #444;
+            margin: 20px 0 10px;
+        }
+    
+    </style>
+    
+</head>
+
+
+<body>
+
+    
+      <div class="alert alert-{{ category }}"></div>
+    
+
+    <div class="container">
+        <h1><i class="fas fa-microphone-alt"></i> Speech & Video Transcription</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="file-tab">File Transcription</button>
+            <button class="tab-btn" data-tab="live-tab">Live Transcription</button>
+        </div>
+
+        <!-- File Upload Section -->
+        <div id="file-tab" class="tab-content active">
+            <form id="upload-form" method="POST" enctype="multipart/form-data">
+                <div class="upload-area" id="drop-zone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & Drop your video file here</p>
+                    <p>or</p>
+                    <label for="file-input" class="btn">Browse Files</label>
+                    <input id="file-input" type="file" name="file" accept=".mp4,.mov,.avi,.mkv" required>
+                </div>
+                <div class="progress-container hidden">
+                    <div class="progress-bar" id="progress-bar"></div>
+                    <span id="progress-text">0%</span>
+                </div>
+                <button type="submit" class="btn submit-btn">Transcribe File</button>
+            </form>
+        </div>
+
+        <!-- Live Transcription Section -->
+        <div id="live-tab" class="tab-content">
+            <div class="live-controls">
+                <form method="POST" action="{{ url_for('mic') }}">
+                    <div class="form-group">
+                        <label for="language-select">Select Language:</label>
+                        <select id="language-select" name="language" class="form-control">
+                            {% for code, (name, lang_code) in languages.items() %}
+                            <option value="{{ lang_code }}">{{ name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button id="start-btn" class="btn" type="submit"><i class="fas fa-microphone"></i> Start Recording</button>
+                </form>
+
+                <button id="stop-btn" class="btn hidden"><i class="fas fa-stop"></i> Stop Recording</button>
+            </div>
+
+            <div class="transcription-result hidden">
+                <h3>Transcription Result:</h3>
+                <div id="live-transcription" class="transcription-text"></div>
+                <button id="save-btn" class="btn"><i class="fas fa-save"></i> Save Transcription</button>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <input type="checkbox" id="clean_audio" name="clean_audio">
+            <label for="clean_audio">Enable background noise reduction</label>
+        </div>
+
+        
+                <div class="flash-messages">
+                    
+                        <div class="flash-{{ category }}"></div>
+                    
+                </div>
+           
+    </div>
+    <div id="processing-animation" style="display:none;">
+        <div class="spinner"></div>
+        <p>Processing your file...</p>
+    </div>
+    
+    <style>
+    .spinner {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #4361ee;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    </style>
+    
+    <script>
+    document.querySelector('form').addEventListener('submit', function() {
+        document.getElementById('processing-animation').style.display = 'block';
+    });
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <h2>OR</h2>
+    <h2><a href="/mic">Live Microphone Speech to Text</a></h2>
+    <a href="{{ url_for('emergency') }}" class="emergency-link">Emergency Assistance</a>
+</body>
+</html>
